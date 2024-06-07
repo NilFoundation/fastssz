@@ -6,8 +6,6 @@ import (
 	"fmt"
 	"math"
 	"sort"
-
-	"github.com/minio/sha256-simd"
 )
 
 // VerifyProof verifies a single merkle branch. It's more
@@ -161,6 +159,5 @@ func getRequiredIndices(leafIndices []int) []int {
 }
 
 func hashFn(data []byte) []byte {
-	res := sha256.Sum256(data)
-	return res[:]
+	return poseidonSum(data)
 }

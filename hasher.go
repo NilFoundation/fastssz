@@ -8,7 +8,7 @@ import (
 
 	"encoding/binary"
 
-	"github.com/minio/sha256-simd"
+	"github.com/iden3/go-iden3-crypto/poseidon"
 )
 
 var _ HashWalker = (*Hasher)(nil)
@@ -36,9 +36,17 @@ func init() {
 	for i := 0; i < 64; i++ {
 		copy(tmp[:32], zeroHashes[i][:])
 		copy(tmp[32:], zeroHashes[i][:])
-		zeroHashes[i+1] = sha256.Sum256(tmp[:])
+		zeroHashes[i+1] = [32]byte(poseidonSum(tmp[:]))
 		zeroHashLevels[string(zeroHashes[i+1][:])] = i + 1
 	}
+}
+
+func poseidonSum(input []byte) []byte {
+	res := poseidon.Sum(input)
+	if rest := len(res) % 32; rest != 0 {
+		res = append(res, zeroBytes[:32-rest]...)
+	}
+	return res
 }
 
 // HashWithDefaultHasher hashes a HashRoot object with a Hasher from
@@ -67,13 +75,17 @@ type Hasher struct {
 	// tmp array used for uint64 and bitlist processing
 	tmp []byte
 
-	// sha256 hash function
+	// hash function
 	hash HashFn
 }
 
-// NewHasher creates a new Hasher object with sha256 hash
+// NewHasher creates a new Hasher object with a hash
 func NewHasher() *Hasher {
-	return NewHasherWithHash(sha256.New())
+	hasher, err := poseidon.New(16)
+	if err != nil {
+		return nil
+	}
+	return NewHasherWithHash(hasher)
 }
 
 // NewHasherWithHash creates a new Hasher object with a custom hash.Hash function
