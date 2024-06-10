@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	ssz "github.com/ferranbt/fastssz"
+	ssz "github.com/NilFoundation/fastssz"
 	"github.com/iden3/go-iden3-crypto/poseidon"
 )
 

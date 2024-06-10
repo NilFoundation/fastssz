@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	ssz "github.com/ferranbt/fastssz"
+	ssz "github.com/NilFoundation/fastssz"
 	"github.com/golang/snappy"
 	"github.com/prysmaticlabs/gohashtree"
 
