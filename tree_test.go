@@ -48,7 +48,7 @@ func TestParseTree(t *testing.T) {
 
 	r, err := TreeFromNodesWithMixin(nodes, len(nodes), 8)
 	require.NoError(t, err, "failed to construct tree")
-	require.Equal(t, "850f07566ebef9934782eec2db35b997a44a37aa4eab01a4d25f02e807602136", hex.EncodeToString(r.Hash()))
+	require.Equal(t, "288d15af569f7da3abace0746f6d158790777a3d3da8d34f62c396dd39457ec9", hex.EncodeToString(r.Hash()))
 }
 
 func TestSparseTreeWithLeavesWithOtherNodes(t *testing.T) {
@@ -96,11 +96,11 @@ func TestSparseTreeWithLeavesWithOtherNodes(t *testing.T) {
 
 	r, err := TreeFromNodesWithMixin(nodes, len(nodes), limit)
 	require.NoError(t, err, "failed to construct tree")
-	require.Equal(t, "8162efcb0b2e5da308a6a6fb2d4c5c8b65a77a475247d7f751ef998f9a70f294", hex.EncodeToString(r.Hash()))
+	require.Equal(t, "05e311d40ed6adf20ec7e2e060bc8b973e34bae9c395985ebfaeab6e213df47c", hex.EncodeToString(r.Hash()))
 }
 
 func TestHashTree(t *testing.T) {
-	expectedRootHex := "6621edd5d039d27d1ced186d57691a04903ac79b389187c2d453b5d3cd65180e"
+	expectedRootHex := "27b4eb60243abfad5a1fa54297c648deab5e59f4cc0bf4fe5b5fd4b5ebcc1fff"
 	expectedRoot, err := hex.DecodeString(expectedRootHex)
 	if err != nil {
 		t.Errorf("Failed to decode hex string\n")
@@ -127,7 +127,7 @@ func TestHashTree(t *testing.T) {
 func TestProve(t *testing.T) {
 	expectedProofHex := []string{
 		"0000",
-		"5db57a86b859d1c286b5f1f585048bf8f6b5e626573a8dc728ed5080f6f43e2c",
+		"2070f76b0e97b1f7502311cc07a7da947a94ec15d7f8a25b7fcaa9177101513b",
 	}
 	chunks := [][]byte{
 		{0x01, 0x01},

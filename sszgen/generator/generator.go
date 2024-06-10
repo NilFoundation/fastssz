@@ -2,7 +2,6 @@ package generator
 
 import (
 	"bytes"
-	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
 	"go/ast"
@@ -20,6 +19,7 @@ import (
 	"text/template"
 
 	"github.com/ferranbt/fastssz/sszgen/version"
+	"github.com/iden3/go-iden3-crypto/poseidon"
 )
 
 const bytesPerLengthOffset = 4
@@ -383,8 +383,8 @@ func (e *env) hashSource() (string, error) {
 		content += buf.String()
 	}
 
-	hash := sha256.Sum256([]byte(content))
-	return hex.EncodeToString(hash[:]), nil
+	hash := poseidon.Sum([]byte(content))
+	return hex.EncodeToString(hash), nil
 }
 
 var valuesImported []*Value
