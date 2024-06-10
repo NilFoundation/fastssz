@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	ssz "github.com/ferranbt/fastssz"
+	ssz "github.com/NilFoundation/fastssz"
 	"github.com/stretchr/testify/require"
 )
 

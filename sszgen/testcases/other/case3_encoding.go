@@ -4,7 +4,7 @@
 package other
 
 import (
-	ssz "github.com/ferranbt/fastssz"
+	ssz "github.com/NilFoundation/fastssz"
 )
 
 // MarshalSSZ ssz marshals the Case3B object

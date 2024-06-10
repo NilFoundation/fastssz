@@ -18,7 +18,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/ferranbt/fastssz/sszgen/version"
+	"github.com/NilFoundation/fastssz/sszgen/version"
 	"github.com/iden3/go-iden3-crypto/poseidon"
 )
 
@@ -401,7 +401,7 @@ func (e *env) print(order []string) (string, bool, error) {
 	package {{.package}}
 
 	import (
-		ssz "github.com/ferranbt/fastssz" {{ if .imports }}{{ range $value := .imports }}
+		ssz "github.com/NilFoundation/fastssz" {{ if .imports }}{{ range $value := .imports }}
 			{{ $value }} {{ end }}
 		{{ end }}
 	)
