@@ -43,10 +43,12 @@ func init() {
 
 func poseidonSum(input []byte) []byte {
 	res := poseidon.Sum(input)
-	if rest := len(res) % 32; rest != 0 {
-		res = append(res, zeroBytes[:32-rest]...)
+	if len(res) == 32 {
+		return res
 	}
-	return res
+	output := make([]byte, 32)
+	copy(output[32-len(res):], res)
+	return output
 }
 
 // HashWithDefaultHasher hashes a HashRoot object with a Hasher from
