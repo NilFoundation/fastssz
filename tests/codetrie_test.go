@@ -11,14 +11,11 @@ import (
 	"github.com/iden3/go-iden3-crypto/poseidon"
 )
 
-var zeroBytes = make([]byte, 32)
-
 func poseidonSum(input []byte) []byte {
+	output := make([]byte, 32)
 	res := poseidon.Sum(input)
-	if len(res) != 32 {
-		res = append(res, zeroBytes[:32-len(res)]...)
-	}
-	return res
+	copy(output[32-len(res):], res)
+	return output
 }
 
 func TestVerifyMetadataProof(t *testing.T) {
@@ -111,7 +108,7 @@ func TestVerifyCodeTrieProof(t *testing.T) {
 			valid: true,
 		},
 		{
-			root: "1b8170b45b3580f30d19aec698fbfe11c557f7398fa59a69dcbd6c6e53307732",
+			root: "03608ede03131a9f8d1bb968f071aa4704d789cc7b0a307e95a59c2875e2cd0c",
 			proof: []string{
 				"0000000000000000000000000000000000000000000000000000000000000000",
 				"0000000000000000000000000000000000000000000000000000000000000000",
@@ -165,7 +162,7 @@ func TestVerifyCodeTrieMultiProof(t *testing.T) {
 		valid   bool
 	}{
 		{
-			root: "12fe4f8049d94a8b967b29f4d4949969ef31615930656c46cad86df2de9d34bd",
+			root: "2b2bcc5615d1af1035ffd7ee1c3a5ae4accd10e1abf4b08ff991e37499806589",
 			proof: []string{
 				"0000000000000000000000000000000000000000000000000000000000000000",
 				"0000000000000000000000000000000000000000000000000000000000000000",
