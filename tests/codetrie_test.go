@@ -12,6 +12,9 @@ import (
 )
 
 func poseidonSum(input []byte) []byte {
+	if input == nil {
+		return make([]byte, 32)
+	}
 	output := make([]byte, 32)
 	res := poseidon.Sum(input)
 	copy(output[32-len(res):], res)

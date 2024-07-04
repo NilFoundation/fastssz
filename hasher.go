@@ -1,12 +1,11 @@
 package ssz
 
 import (
+	"encoding/binary"
 	"fmt"
 	"hash"
 	"math/bits"
 	"sync"
-
-	"encoding/binary"
 
 	"github.com/iden3/go-iden3-crypto/poseidon"
 )
@@ -21,9 +20,11 @@ var (
 	ErrIncorrectListSize = fmt.Errorf("incorrect list size")
 )
 
-var zeroHashes [65][32]byte
-var zeroHashLevels map[string]int
-var trueBytes, falseBytes []byte
+var (
+	zeroHashes            [65][32]byte
+	zeroHashLevels        map[string]int
+	trueBytes, falseBytes []byte
+)
 
 func init() {
 	falseBytes = make([]byte, 32)
@@ -42,6 +43,9 @@ func init() {
 }
 
 func poseidonSum(input []byte) []byte {
+	if input == nil {
+		return make([]byte, 32)
+	}
 	res := poseidon.Sum(input)
 	if len(res) == 32 {
 		return res
