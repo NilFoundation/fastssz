@@ -261,6 +261,8 @@ func (c *CodeTrieSmall) SizeSSZ() (size int) {
 	return
 }
 
+const CodeTrieSmallMaxChunksSize = 4
+
 // HashTreeRoot ssz hashes the CodeTrieSmall object
 func (c *CodeTrieSmall) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(c)
@@ -395,6 +397,8 @@ func (c *CodeTrieBig) SizeSSZ() (size int) {
 
 	return
 }
+
+const CodeTrieBigMaxChunksSize = 1024
 
 // HashTreeRoot ssz hashes the CodeTrieBig object
 func (c *CodeTrieBig) HashTreeRoot() ([32]byte, error) {

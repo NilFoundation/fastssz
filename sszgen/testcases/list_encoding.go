@@ -148,6 +148,8 @@ func (l *ListC) SizeSSZ() (size int) {
 	return
 }
 
+const ListCMaxElemsSize = 32
+
 // HashTreeRoot ssz hashes the ListC object
 func (l *ListC) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(l)
@@ -258,6 +260,8 @@ func (l *ListP) SizeSSZ() (size int) {
 
 	return
 }
+
+const ListPMaxElemsSize = 32
 
 // HashTreeRoot ssz hashes the ListP object
 func (l *ListP) HashTreeRoot() ([32]byte, error) {

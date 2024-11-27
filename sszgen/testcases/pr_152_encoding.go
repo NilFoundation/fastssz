@@ -77,6 +77,8 @@ func (p *PR1512) SizeSSZ() (size int) {
 	return
 }
 
+const PR1512MaxDSize = 32
+
 // HashTreeRoot ssz hashes the PR1512 object
 func (p *PR1512) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(p)

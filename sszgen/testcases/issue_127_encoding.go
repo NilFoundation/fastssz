@@ -101,6 +101,8 @@ func (o *Obj2) SizeSSZ() (size int) {
 	return
 }
 
+const Obj2MaxT1Size = 1024
+
 // HashTreeRoot ssz hashes the Obj2 object
 func (o *Obj2) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(o)

@@ -19,14 +19,27 @@ func (e *env) size(name string, v *Value) string {
 		{{.dynamic}}
 		{{end}}
 		return
-	}`
+	}
+	{{.fieldsMaxSizes}}
+	`
 
 	str := execTmpl(tmpl, map[string]interface{}{
-		"name":    name,
-		"fixed":   v.fixedSize(),
-		"dynamic": v.sizeContainer("size", true),
+		"name":           name,
+		"fixed":          v.fixedSize(),
+		"dynamic":        v.sizeContainer("size", true),
+		"fieldsMaxSizes": v.fieldsMaxSizes(name),
 	})
 	return appendObjSignature(str, v)
+}
+
+func (v *Value) fieldsMaxSizes(name string) string {
+	out := []string{}
+	for _, v := range v.o {
+		if !v.isFixed() {
+			out = append(out, fmt.Sprintf("const %sMax%sSize = %d", name, v.name, v.s))
+		}
+	}
+	return strings.Join(out, "\n")
 }
 
 func (v *Value) fixedSize() uint64 {

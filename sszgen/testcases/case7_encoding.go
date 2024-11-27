@@ -84,6 +84,8 @@ func (c *Case7) SizeSSZ() (size int) {
 	return
 }
 
+const Case7MaxBlobKzgsSize = 16
+
 // HashTreeRoot ssz hashes the Case7 object
 func (c *Case7) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(c)

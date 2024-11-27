@@ -86,6 +86,8 @@ func (a *AggregateAndProof) SizeSSZ() (size int) {
 	return
 }
 
+const AggregateAndProofMaxAggregateSize = 0
+
 // HashTreeRoot ssz hashes the AggregateAndProof object
 func (a *AggregateAndProof) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(a)
@@ -401,6 +403,8 @@ func (a *Attestation) SizeSSZ() (size int) {
 
 	return
 }
+
+const AttestationMaxAggregationBitsSize = 2048
 
 // HashTreeRoot ssz hashes the Attestation object
 func (a *Attestation) HashTreeRoot() ([32]byte, error) {
@@ -837,6 +841,8 @@ func (i *IndexedAttestation) SizeSSZ() (size int) {
 	return
 }
 
+const IndexedAttestationMaxAttestationIndicesSize = 2048
+
 // HashTreeRoot ssz hashes the IndexedAttestation object
 func (i *IndexedAttestation) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(i)
@@ -979,6 +985,8 @@ func (p *PendingAttestation) SizeSSZ() (size int) {
 
 	return
 }
+
+const PendingAttestationMaxAggregationBitsSize = 2048
 
 // HashTreeRoot ssz hashes the PendingAttestation object
 func (p *PendingAttestation) HashTreeRoot() ([32]byte, error) {
@@ -1968,6 +1976,9 @@ func (a *AttesterSlashing) SizeSSZ() (size int) {
 	return
 }
 
+const AttesterSlashingMaxAttestation1Size = 0
+const AttesterSlashingMaxAttestation2Size = 0
+
 // HashTreeRoot ssz hashes the AttesterSlashing object
 func (a *AttesterSlashing) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(a)
@@ -2101,6 +2112,8 @@ func (b *BeaconBlock) SizeSSZ() (size int) {
 	return
 }
 
+const BeaconBlockMaxBodySize = 0
+
 // HashTreeRoot ssz hashes the BeaconBlock object
 func (b *BeaconBlock) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(b)
@@ -2223,6 +2236,8 @@ func (s *SignedBeaconBlock) SizeSSZ() (size int) {
 
 	return
 }
+
+const SignedBeaconBlockMaxBlockSize = 0
 
 // HashTreeRoot ssz hashes the SignedBeaconBlock object
 func (s *SignedBeaconBlock) HashTreeRoot() ([32]byte, error) {
@@ -2913,6 +2928,13 @@ func (b *BeaconState) SizeSSZ() (size int) {
 	return
 }
 
+const BeaconStateMaxHistoricalRootsSize = 16777216
+const BeaconStateMaxEth1DataVotesSize = 2048
+const BeaconStateMaxValidatorsSize = 1099511627776
+const BeaconStateMaxBalancesSize = 1099511627776
+const BeaconStateMaxPreviousEpochAttestationsSize = 4096
+const BeaconStateMaxCurrentEpochAttestationsSize = 4096
+
 // HashTreeRoot ssz hashes the BeaconState object
 func (b *BeaconState) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(b)
@@ -3473,6 +3495,12 @@ func (b *BeaconBlockBodyPhase0) SizeSSZ() (size int) {
 	return
 }
 
+const BeaconBlockBodyPhase0MaxProposerSlashingsSize = 16
+const BeaconBlockBodyPhase0MaxAttesterSlashingsSize = 2
+const BeaconBlockBodyPhase0MaxAttestationsSize = 128
+const BeaconBlockBodyPhase0MaxDepositsSize = 16
+const BeaconBlockBodyPhase0MaxVoluntaryExitsSize = 16
+
 // HashTreeRoot ssz hashes the BeaconBlockBodyPhase0 object
 func (b *BeaconBlockBodyPhase0) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(b)
@@ -3914,6 +3942,12 @@ func (b *BeaconBlockBodyAltair) SizeSSZ() (size int) {
 
 	return
 }
+
+const BeaconBlockBodyAltairMaxProposerSlashingsSize = 16
+const BeaconBlockBodyAltairMaxAttesterSlashingsSize = 2
+const BeaconBlockBodyAltairMaxAttestationsSize = 128
+const BeaconBlockBodyAltairMaxDepositsSize = 16
+const BeaconBlockBodyAltairMaxVoluntaryExitsSize = 16
 
 // HashTreeRoot ssz hashes the BeaconBlockBodyAltair object
 func (b *BeaconBlockBodyAltair) HashTreeRoot() ([32]byte, error) {
@@ -4395,6 +4429,13 @@ func (b *BeaconBlockBodyBellatrix) SizeSSZ() (size int) {
 
 	return
 }
+
+const BeaconBlockBodyBellatrixMaxProposerSlashingsSize = 16
+const BeaconBlockBodyBellatrixMaxAttesterSlashingsSize = 2
+const BeaconBlockBodyBellatrixMaxAttestationsSize = 128
+const BeaconBlockBodyBellatrixMaxDepositsSize = 16
+const BeaconBlockBodyBellatrixMaxVoluntaryExitsSize = 16
+const BeaconBlockBodyBellatrixMaxExecutionPayloadSize = 0
 
 // HashTreeRoot ssz hashes the BeaconBlockBodyBellatrix object
 func (b *BeaconBlockBodyBellatrix) HashTreeRoot() ([32]byte, error) {
@@ -5066,6 +5107,14 @@ func (b *BeaconStateAltair) SizeSSZ() (size int) {
 
 	return
 }
+
+const BeaconStateAltairMaxHistoricalRootsSize = 16777216
+const BeaconStateAltairMaxEth1DataVotesSize = 2048
+const BeaconStateAltairMaxValidatorsSize = 1099511627776
+const BeaconStateAltairMaxBalancesSize = 1099511627776
+const BeaconStateAltairMaxPreviousEpochParticipationSize = 1099511627776
+const BeaconStateAltairMaxCurrentEpochParticipationSize = 1099511627776
+const BeaconStateAltairMaxInactivityScoresSize = 1099511627776
 
 // HashTreeRoot ssz hashes the BeaconStateAltair object
 func (b *BeaconStateAltair) HashTreeRoot() ([32]byte, error) {
@@ -5913,6 +5962,15 @@ func (b *BeaconStateBellatrix) SizeSSZ() (size int) {
 	return
 }
 
+const BeaconStateBellatrixMaxHistoricalRootsSize = 16777216
+const BeaconStateBellatrixMaxEth1DataVotesSize = 2048
+const BeaconStateBellatrixMaxValidatorsSize = 1099511627776
+const BeaconStateBellatrixMaxBalancesSize = 1099511627776
+const BeaconStateBellatrixMaxPreviousEpochParticipationSize = 1099511627776
+const BeaconStateBellatrixMaxCurrentEpochParticipationSize = 1099511627776
+const BeaconStateBellatrixMaxInactivityScoresSize = 1099511627776
+const BeaconStateBellatrixMaxLatestExecutionPayloadHeaderSize = 0
+
 // HashTreeRoot ssz hashes the BeaconStateBellatrix object
 func (b *BeaconStateBellatrix) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(b)
@@ -6474,6 +6532,8 @@ func (e *ErrorResponse) SizeSSZ() (size int) {
 	return
 }
 
+const ErrorResponseMaxMessageSize = 256
+
 // HashTreeRoot ssz hashes the ErrorResponse object
 func (e *ErrorResponse) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(e)
@@ -6919,6 +6979,9 @@ func (e *ExecutionPayload) SizeSSZ() (size int) {
 	return
 }
 
+const ExecutionPayloadMaxExtraDataSize = 32
+const ExecutionPayloadMaxTransactionsSize = 1048576
+
 // HashTreeRoot ssz hashes the ExecutionPayload object
 func (e *ExecutionPayload) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(e)
@@ -7215,6 +7278,8 @@ func (e *ExecutionPayloadHeader) SizeSSZ() (size int) {
 
 	return
 }
+
+const ExecutionPayloadHeaderMaxExtraDataSize = 32
 
 // HashTreeRoot ssz hashes the ExecutionPayloadHeader object
 func (e *ExecutionPayloadHeader) HashTreeRoot() ([32]byte, error) {
@@ -7562,6 +7627,10 @@ func (e *ExecutionPayloadCapella) SizeSSZ() (size int) {
 	return
 }
 
+const ExecutionPayloadCapellaMaxExtraDataSize = 32
+const ExecutionPayloadCapellaMaxTransactionsSize = 1048576
+const ExecutionPayloadCapellaMaxWithdrawalsSize = 16
+
 // HashTreeRoot ssz hashes the ExecutionPayloadCapella object
 func (e *ExecutionPayloadCapella) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(e)
@@ -7817,6 +7886,8 @@ func (e *ExecutionPayloadHeaderCapella) SizeSSZ() (size int) {
 
 	return
 }
+
+const ExecutionPayloadHeaderCapellaMaxExtraDataSize = 32
 
 // HashTreeRoot ssz hashes the ExecutionPayloadHeaderCapella object
 func (e *ExecutionPayloadHeaderCapella) HashTreeRoot() ([32]byte, error) {
@@ -8774,6 +8845,16 @@ func (b *BeaconStateCapella) SizeSSZ() (size int) {
 	return
 }
 
+const BeaconStateCapellaMaxHistoricalRootsSize = 16777216
+const BeaconStateCapellaMaxEth1DataVotesSize = 2048
+const BeaconStateCapellaMaxValidatorsSize = 1099511627776
+const BeaconStateCapellaMaxBalancesSize = 1099511627776
+const BeaconStateCapellaMaxPreviousEpochParticipationSize = 1099511627776
+const BeaconStateCapellaMaxCurrentEpochParticipationSize = 1099511627776
+const BeaconStateCapellaMaxInactivityScoresSize = 1099511627776
+const BeaconStateCapellaMaxLatestExecutionPayloadHeaderSize = 0
+const BeaconStateCapellaMaxHistoricalSummariesSize = 16777216
+
 // HashTreeRoot ssz hashes the BeaconStateCapella object
 func (b *BeaconStateCapella) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(b)
@@ -9122,6 +9203,8 @@ func (s *SignedBeaconBlockCapella) SizeSSZ() (size int) {
 	return
 }
 
+const SignedBeaconBlockCapellaMaxBlockSize = 0
+
 // HashTreeRoot ssz hashes the SignedBeaconBlockCapella object
 func (s *SignedBeaconBlockCapella) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(s)
@@ -9242,6 +9325,8 @@ func (b *BeaconBlockCapella) SizeSSZ() (size int) {
 
 	return
 }
+
+const BeaconBlockCapellaMaxBodySize = 0
 
 // HashTreeRoot ssz hashes the BeaconBlockCapella object
 func (b *BeaconBlockCapella) HashTreeRoot() ([32]byte, error) {
@@ -9679,6 +9764,14 @@ func (b *BeaconBlockBodyCapella) SizeSSZ() (size int) {
 	return
 }
 
+const BeaconBlockBodyCapellaMaxProposerSlashingsSize = 16
+const BeaconBlockBodyCapellaMaxAttesterSlashingsSize = 2
+const BeaconBlockBodyCapellaMaxAttestationsSize = 128
+const BeaconBlockBodyCapellaMaxDepositsSize = 16
+const BeaconBlockBodyCapellaMaxVoluntaryExitsSize = 16
+const BeaconBlockBodyCapellaMaxExecutionPayloadSize = 0
+const BeaconBlockBodyCapellaMaxBlsToExecutionChangesSize = 16
+
 // HashTreeRoot ssz hashes the BeaconBlockBodyCapella object
 func (b *BeaconBlockBodyCapella) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(b)
@@ -10077,6 +10170,10 @@ func (e *ExecutionPayloadDeneb) SizeSSZ() (size int) {
 	return
 }
 
+const ExecutionPayloadDenebMaxExtraDataSize = 32
+const ExecutionPayloadDenebMaxTransactionsSize = 1048576
+const ExecutionPayloadDenebMaxWithdrawalsSize = 16
+
 // HashTreeRoot ssz hashes the ExecutionPayloadDeneb object
 func (e *ExecutionPayloadDeneb) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(e)
@@ -10350,6 +10447,8 @@ func (e *ExecutionPayloadHeaderDeneb) SizeSSZ() (size int) {
 
 	return
 }
+
+const ExecutionPayloadHeaderDenebMaxExtraDataSize = 32
 
 // HashTreeRoot ssz hashes the ExecutionPayloadHeaderDeneb object
 func (e *ExecutionPayloadHeaderDeneb) HashTreeRoot() ([32]byte, error) {
