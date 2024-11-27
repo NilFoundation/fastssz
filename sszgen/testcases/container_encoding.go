@@ -152,6 +152,8 @@ func (v *Vec2) SizeSSZ() (size int) {
 	return
 }
 
+const Vec2MaxValues2Size = 100
+
 // HashTreeRoot ssz hashes the Vec2 object
 func (v *Vec2) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(v)

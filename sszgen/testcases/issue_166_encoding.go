@@ -75,6 +75,8 @@ func (i *Issue165) SizeSSZ() (size int) {
 	return
 }
 
+const Issue165MaxASize = 0
+
 // HashTreeRoot ssz hashes the Issue165 object
 func (i *Issue165) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(i)

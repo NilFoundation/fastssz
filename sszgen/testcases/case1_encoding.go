@@ -74,6 +74,8 @@ func (c *Case1A) SizeSSZ() (size int) {
 	return
 }
 
+const Case1AMaxFooSize = 2048
+
 // HashTreeRoot ssz hashes the Case1A object
 func (c *Case1A) HashTreeRoot() ([32]byte, error) {
 	return ssz.HashWithDefaultHasher(c)
@@ -170,6 +172,8 @@ func (c *Case1B) SizeSSZ() (size int) {
 
 	return
 }
+
+const Case1BMaxBarSize = 32
 
 // HashTreeRoot ssz hashes the Case1B object
 func (c *Case1B) HashTreeRoot() ([32]byte, error) {
