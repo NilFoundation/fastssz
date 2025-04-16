@@ -7,8 +7,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/mitchellh/mapstructure"
-	"gopkg.in/yaml.v2"
+	"github.com/go-viper/mapstructure/v2"
+	"gopkg.in/yaml.v3"
 )
 
 func isByteSlice(t reflect.Type) bool {
