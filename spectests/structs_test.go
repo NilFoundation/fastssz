@@ -13,7 +13,7 @@ import (
 	"github.com/golang/snappy"
 	"github.com/prysmaticlabs/gohashtree"
 
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 type codec interface {
@@ -146,32 +146,22 @@ func testSpecFork(t *testing.T, fork fork) {
 }
 
 func TestSpec_Phase0(t *testing.T) {
-	t.SkipNow() // TODO: it seems not compatible with poseidon hash
-
 	testSpecFork(t, phase0)
 }
 
 func TestSpec_Altair(t *testing.T) {
-	t.SkipNow() // TODO: it seems not compatible with poseidon hash
-
 	testSpecFork(t, altair)
 }
 
 func TestSpec_Bellatrix(t *testing.T) {
-	t.SkipNow() // TODO: it seems not compatible with poseidon hash
-
 	testSpecFork(t, bellatrix)
 }
 
 func TestSpec_Capella(t *testing.T) {
-	t.SkipNow() // TODO: it seems not compatible with poseidon hash
-
 	testSpecFork(t, capella)
 }
 
 func TestSpec_Deneb(t *testing.T) {
-	t.SkipNow() // TODO: it seems not compatible with poseidon hash
-
 	testSpecFork(t, deneb)
 }
 

@@ -50,7 +50,7 @@ func TestParseTree(t *testing.T) {
 
 	r, err := TreeFromNodesWithMixin(nodes, len(nodes), 8)
 	require.NoError(t, err, "failed to construct tree")
-	require.Equal(t, "288d15af569f7da3abace0746f6d158790777a3d3da8d34f62c396dd39457ec9", hex.EncodeToString(r.Hash()))
+	require.Equal(t, "850f07566ebef9934782eec2db35b997a44a37aa4eab01a4d25f02e807602136", hex.EncodeToString(r.Hash()))
 }
 
 func TestSparseTreeWithLeavesWithOtherNodes(t *testing.T) {
@@ -98,11 +98,11 @@ func TestSparseTreeWithLeavesWithOtherNodes(t *testing.T) {
 
 	r, err := TreeFromNodesWithMixin(nodes, len(nodes), limit)
 	require.NoError(t, err, "failed to construct tree")
-	require.Equal(t, "05e311d40ed6adf20ec7e2e060bc8b973e34bae9c395985ebfaeab6e213df47c", hex.EncodeToString(r.Hash()))
+	require.Equal(t, "8162efcb0b2e5da308a6a6fb2d4c5c8b65a77a475247d7f751ef998f9a70f294", hex.EncodeToString(r.Hash()))
 }
 
 func TestHashTree(t *testing.T) {
-	expectedRootHex := "27b4eb60243abfad5a1fa54297c648deab5e59f4cc0bf4fe5b5fd4b5ebcc1fff"
+	expectedRootHex := "6621edd5d039d27d1ced186d57691a04903ac79b389187c2d453b5d3cd65180e"
 	expectedRoot, err := hex.DecodeString(expectedRootHex)
 	if err != nil {
 		t.Errorf("Failed to decode hex string\n")
@@ -129,7 +129,7 @@ func TestHashTree(t *testing.T) {
 func TestProve(t *testing.T) {
 	expectedProofHex := []string{
 		"0000",
-		"2070f76b0e97b1f7502311cc07a7da947a94ec15d7f8a25b7fcaa9177101513b",
+		"5db57a86b859d1c286b5f1f585048bf8f6b5e626573a8dc728ed5080f6f43e2c",
 	}
 	chunks := [][]byte{
 		{0x01, 0x01},
@@ -208,26 +208,26 @@ func TestGetRequiredIndices(t *testing.T) {
 
 func TestProveRepeated(t *testing.T) {
 	expectedProofHex := []string{
-		"0000000000000000000000000000000000000000000000000000000000000000",
-		"0f63cd0c9fbe679a562469831d8e810c9d33cc2409695b8e6a893e627ea952d1",
-		"2002fe39e9f175512f30e30fa0d4e003e9df611db3fca96197db976f8644c75a",
-		"0efb0ee9dcc58a77f39d41bae90162cd3bf08e13a071178e1025553db53745ad",
-		"27f5f069f3f41c239e75979eb0657fb075dbf942cca053299352f44b9e9965d3",
-		"1fbd18a35a88359c8c07f8376be954c34dd26072ccf177877212c3f9374ddc59",
-		"2e26d40034abf56520b6f5541568a7686ceb239e7758be6e532795b7f73fa5d2",
-		"0b79992a65a374bac4b18ec26f9e37157d4e0f4c127c04ca72c8a53c41cd9224",
-		"1bb420fa5409ee48bb27b0d4465592ab5707eddb0781c13558a4f0c897174603",
-		"0324443b152adfd89fd6e9ab1f961f7d7a7685eda90ab43ac09b2032e749cbc2",
-		"1c00cb3774bc70cc022ef9fde08ae772f60bd3a2687dc38a00aae29b24d69462",
-		"25cf3992c3326fcdefb83c2be615934d83d7442ef45986cfa6c3232e7df3c9c8",
-		"154c56140e60983aaa84422e1dc1157108ba78e67a2873b2be2fd0f4f40dc1ee",
-		"12e3145a126ae9f763558b70a5f8028ee3df4621c0aabc84ef9343386c7eb13e",
-		"2262efd8de5e475e56f5d15032313fd423a3d11b977e7937189f238da081cfd4",
-		"14bc25b6b80519138cbf24ea6a9fb50c6de5866b597e1aab72546efd1693424e",
-		"0221f72ccd94b863552b04add6c4e598e0b8ba417c1cc162aa3ea5c45de413c2",
-		"13f6e36d3fdf2cc8d464d8fb7938ed1f4d0341f0bbac5547e1c00df112844350",
-		"0dd210443855682a4b32995f498f365e4d2ba82936045b1611f80000a30d2580",
-		"30177faa30b66f174c9c248aa8296d216b3a494430693a0d5ad71996c57996ad",
+		"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+		"2dba5dbc339e7316aea2683faf839c1b7b1ee2313db792112588118df066aa35",
+		"5310a330e8f970388503c73349d80b45cd764db615f1bced2801dcd4524a2ff4",
+		"80d1bf4dd6c1f75bba022337a3f0842078f5c2e7f3f59dfd33ccbb8e963367b2",
+		"1492e66e89e186840231850712161255d203b5bbf48d21242f0b51519b5eb3d4",
+		"03a82289eea21de37e72ad6c07865dcab3f2cd681ad47c1cd0ea30e1751ad996",
+		"35603b6278eb5d320c99eeb68354d448493e1ab9857cb0bddb9f7fa72250a3a8",
+		"8ff9103704f4e7dfee6106551eb439d3ac6bc5cc4873ced8ec33eaf2d42f4c31",
+		"259ca0ef3ecb66bb9f02e2ca9de6c7ff13951ad824ece4c680555cfef4321d17",
+		"4f52a2051143520841633a6e53f1ad5948a584dcdbc8ea206d8008d1cfe104a9",
+		"7ef919cf6137226a4c132f3bcab47a11aa1dfe78a357c19c0c804508829f2623",
+		"cbafa51c68b69bc206500c4733c2cc4cc6b67f712cc5fbad5b2d365998ba37a0",
+		"e11746324aa6ce20024a6e4796ae38d2dce7d5e015071a4a2cc96c9b71fafb32",
+		"e3b4036e156dd6ccf9e41e36b011fd00f79645e361d02a9484eaba96e3be7179",
+		"a3cbeb34d17bf5aa47054abd93e0ea1c992eef8359ad6a0f596ea48e455d540a",
+		"d1f9c8fa1339b232013cc9585b380372614a869fd0fd2e3d07bec2f3c96b4c6d",
+		"162947673d0323a56dcccedf09d1c45dfe40c1ddcdb14f69880ae36f60ee434f",
+		"62c0a299966c9ec0a031d01d8bd5330b191461a5dd13a4ac5dd662097c6fc099",
+		"c324ca782716eac179133ee5f4b315c2a9e6e922aead7963a95302412f5e0001",
+		"dcb5df19b4aa726ff826a34a97704b11e111c3cc519ebbe9133f189e05766dfa",
 	}
 
 	chunks := make([][]byte, 1048576)
